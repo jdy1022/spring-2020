@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--###########################  入门程序  ###########################################-->
+
+    <!-- <bean id="student" class="com.jdy.spring2020.bean.Student">
+         &lt;!&ndash;property中name的值要和pojo中属性set方法会面的一致&ndash;&gt;
+         <property name="studentId" value="0001"/>
+         <property name="name" value="jdy"/>
+         <property name="age" value="18"/>
+     </bean>-->
+
+
+    <!--###########################  通过bean的构造器赋值Spring自动匹配合适的构造器 #############################-->
+    <!--Spring自动匹配合适的构造器-->
+    <!--<bean id="student" class="com.jdy.spring2020.bean.Student">
+        <constructor-arg name="studentId" value="0001"/>
+        <constructor-arg name="name" value="jdy"/>
+        <constructor-arg name="age" value="18"/>
+    </bean>-->
+
+    <!--###########################  通过bean的构造器赋值 通过索引值指定参数位置 #############################-->
+
+    <!--通过索引值指定参数位置 索引从0开始-->
+    <!-- <bean id="student" class="com.jdy.spring2020.bean.Student">
+         <constructor-arg index="0" value="0001"/>
+         <constructor-arg index="1" value="jdy"/>
+         <constructor-arg index="2" value="18"/>
+     </bean>-->
+
+    <!--###########################  通过bean的构造器赋值 通过类型区分重载的构造器 #############################-->
+    <!-- <bean id="student" class="com.jdy.spring2020.bean.Student">
+         <constructor-arg index="0" value="0001" type="java.lang.String"/>
+         <constructor-arg index="1" value="jdy" type="java.lang.String"/>
+         <constructor-arg index="2" value="18" type="java.lang.String"/>
+     </bean>-->
+
+
+    <!--###########################  p命名空间 #############################-->
+    <!--p命名空间-->
+    <!--<bean id="student" class="com.jdy.spring2020.bean.Student" p:studentId="0001" p:name="jdy" p:age="18"/>-->
+
+
+    <!--###########################  字面量  #############################-->
+    <!--<bean id="student" class="com.jdy.spring2020.bean.Student">
+        <property name="name">
+            <value> <![CDATA[<?><@!#^&%*!]]></value>
+        </property>
+    </bean>-->
+
+    <!--###########################  外部已声明的bean  #############################-->
+    <!--<bean id="student" class="com.jdy.spring2020.bean.Student">
+        <property name="book" ref="book"/>
+    </bean>
+    <bean id="book" class="com.jdy.spring2020.bean.Book">
+        <property name="name" value="历史"/>
+        <property name="price" value="10.0"/>
+    </bean>-->
+
+    <!--###########################  内部bean  #############################-->
+    <!--<bean id="student" class="com.jdy.spring2020.bean.Student">
+        <property name="book">
+            <bean class="com.jdy.spring2020.bean.Book">
+                <property name="name" value="历史"/>
+                <property name="price" value="10.0"/>
+            </bean>
+        </property>
+    </bean>-->
+
+
+    <!--数组和List-->
+    <!--  <bean id="student" class="com.jdy.spring2020.bean.Student">
+
+          &lt;!&ndash; 以bean的引用为值的List集合 &ndash;&gt;
+          <property name="books">
+              <list>
+                  <ref bean="book1"/>
+                  <ref bean="book2"/>
+              </list>
+          </property>
+          &lt;!&ndash; 以字面量为值的List集合 &ndash;&gt;
+          <property name="phoneNos">
+              <list>
+                  <value>10086</value>
+                  <value>10001</value>
+                  <value>10000</value>
+              </list>
+          </property>
+      </bean>
+
+      <bean id="book1" class="com.jdy.spring2020.bean.Book">
+          <property name="name" value="历史"/>
+          <property name="price" value="10.0"/>
+      </bean>
+
+      <bean id="book2" class="com.jdy.spring2020.bean.Book">
+          <property name="name" value="政治"/>
+          <property name="price" value="20.0"/>
+      </bean>
+  -->
+
+
+    <!--<bean id="student" class="com.jdy.spring2020.bean.Student">
+
+        &lt;!&ndash; 以bean的引用为值的List集合 &ndash;&gt;
+        <property name="bookMaps">
+            <map>
+                <entry>
+                    <key>
+                        <value>bookKey01</value>
+                    </key>
+                    <ref bean="book1"/>
+                </entry>
+                <entry>
+                    <key>
+                        <value>bookKey02</value>
+                    </key>
+                    <ref bean="book2"/>
+                </entry>
+            </map>
+        </property>
+        &lt;!&ndash; 以字面量为值的List集合 &ndash;&gt;
+        <property name="remarks">
+            <map>
+                <entry>
+                    <key>
+                        <value>爱好</value>
+                    </key>
+                    <value>吃</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="book1" class="com.jdy.spring2020.bean.Book">
+        <property name="name" value="历史"/>
+        <property name="price" value="10.0"/>
+    </bean>
+
+    <bean id="book2" class="com.jdy.spring2020.bean.Book">
+        <property name="name" value="政治"/>
+        <property name="price" value="20.0"/>
+    </bean>-->
+
+    <!--<bean id="student" class="com.jdy.spring2020.bean.Student">
+        <property name="books">
+            <ref bean="books"/>
+        </property>
+        <property name="phoneNos">
+            <ref bean="phoneNos"/>
+        </property>
+        <property name="bookMaps">
+            <ref bean="remarks"/>
+        </property>
+    </bean>
+
+    &lt;!&ndash;Set和List用发一样&ndash;&gt;
+    <util:list id="books">
+        <ref bean="book1"/>
+        <ref bean="book2"/>
+    </util:list>
+
+    <util:list id="phoneNos">
+        <value>10086</value>
+        <value>10001</value>
+        <value>10000</value>
+    </util:list>
+
+    <bean id="book1" class="com.jdy.spring2020.bean.Book">
+        <property name="name" value="历史"/>
+        <property name="price" value="10.0"/>
+    </bean>
+
+    <util:map id="remarks">
+        <entry key="爱好" value="吃" />
+        <entry key="book" value-ref="books" />
+    </util:map>
+
+    <bean id="book2" class="com.jdy.spring2020.bean.Book">
+        <property name="name" value="政治"/>
+        <property name="price" value="20.0"/>
+    </bean>-->
+
+
+    <!--FactoryBean-->
+    <!--
+        工厂bean出现的原因：支持coder参与具体bean的创建过程
+        通过FactoryBean具体返回的对象是有getObject()方法来决定
+    -->
+    <!--<bean id="myFactoryBean" class="com.jdy.spring2020.factorybean.MyFactoryBean"> </bean>-->
+
+
+    <!--其中重点看base，这个bean没有class属性，但是有个abstract="true"-->
+    <!--<bean id="base" abstract="true">
+        <property name="price" value="10"/>
+    </bean>
+
+    <bean id="book0" class="com.jdy.spring2020.bean.Book" parent="base">
+        <property name="name" value="历史"/>
+    </bean>
+
+    <bean id="book1" class="com.jdy.spring2020.bean.Book" parent="base">
+        <property name="name" value="政治"/>
+    </bean>-->
+
+    <!--<bean id="car" class="com.jdy.spring2020.bean.Car" scope="prototype">
+        <property name="brand" value="政治"/>
+        <property name="price" value="10"/>
+    </bean>
+
+    <bean id="student" class="com.jdy.spring2020.bean.Student" scope="prototype"></bean>-->
+
+
+    <!--bean id="car" class="com.jdy.spring2020.bean.Car" init-method="inti_method" destroy-method="destory_method">
+        <property name="brand" value="政治"/>
+        <property name="price" value="10"/>
+    </bean>
+
+    <bean class="com.jdy.spring2020.Processor.MyProcessor"/>-->
+
+    <!-- &lt;!&ndash; 直接配置 &ndash;&gt;
+     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+         <property name="user" value="root"/>
+         <property name="password" value="root"/>
+         <property name="jdbcUrl" value="jdbc:mysql:///db"/>
+         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+     </bean>-->
+
+    <!-- 指定properties属性文件的位置 -->
+    <!-- classpath:xxx 表示属性文件位于类路径下 -->
+    <!--<context:property-placeholder location="classpath:jdbc.properties"/>
+    &lt;!&ndash; 从properties属性文件中引入属性值 &ndash;&gt;
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${prop.userName}"/>
+        <property name="password" value="${prop.password}"/>
+        <property name="jdbcUrl" value="${prop.url}"/>
+        <property name="driverClass" value="${prop.driverClass}"/>
+    </bean>-->
+
+
+    <!--<bean id="person" class="com.jdy.spring2020.bean.Person" autowire="byName">
+        <property name="name" value="小明"/>
+    </bean>
+
+    <bean id="dog"  class="com.jdy.spring2020.bean.Dog">
+        <property name="name" value="阿黄"/>
+        <property name="age" value="10"/>
+    </bean>-->
+
+    <!--<context:component-scan base-package="com.jdy.spring2020.scan" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>-->
+
+    <!-- <context:component-scan base-package="com.jdy.spring2020.scan" use-default-filters="false">
+         <context:include-filter type="assignable" expression="com.jdy.spring2020.scan.service.intf.MyService"/>
+     </context:component-scan>-->
+
+
+    <!-- <context:component-scan base-package="com.jdy.spring2020.scan" use-default-filters="false">
+         <context:include-filter type="assignable" expression="com.jdy.spring2020.scan.service.intf.MyService"/>
+     </context:component-scan>-->
+
+
+    <!--<context:component-scan base-package="com.jdy.spring2020.scan" use-default-filters="false">
+        &lt;!&ndash;type是给正则表达式，类名以Service结尾的会被扫描进Spring容器&ndash;&gt;
+        <context:include-filter type="regex" expression="com.jdy.spring2020.scan.*Service"/>
+    </context:component-scan>-->
+
+
+    <!-- <context:component-scan base-package="com.jdy.spring2020.scan" use-default-filters="false">
+         <context:include-filter type="custom" expression="com.jdy.spring2020.MyTypeFilter"/>
+     </context:component-scan>-->
+
+
+    <!--<context:component-scan base-package="com.jdy.spring2020"/>
+    <aop:aspectj-autoproxy/>-->
+
+       <!--<bean id="calculatorLoggingAspect" class="com.jdy.spring2020.aop.CalculatorLoggingAspect"/>-->
+
+       <!-- <aop:config>
+            <aop:pointcut id="pointcut01" expression="execution( com.jdy.spring2020.scan.service.impl.ArithmeticCalculatorImpl.add(int,int))"/>
+            <aop:aspect id="calculatorLoggingAspect" order="0" ref="calculatorLoggingAspect">
+                <aop:after method="after" pointcut-ref="pointcut01"></aop:after>
+            </aop:aspect>
+        </aop:config>-->
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${user}"/>
+        <property name="password" value="${password}"/>
+        <property name="jdbcUrl" value="${jdbcUrl}"/>
+        <property name="driverClass" value="${driverClass}"/>
+        <property name="initialPoolSize" value="${initialPoolSize}"/>
+        <property name="minPoolSize" value="${minPoolSize}"/>
+        <property name="maxPoolSize" value="${maxPoolSize}"/>
+        <property name="acquireIncrement" value="${acquireIncrement}"/>
+        <property name="maxStatements" value="${maxStatements}"/>
+        <property name="maxStatementsPerConnection" value="${maxStatementsPerConnection}"/>
+
+    </bean>
+
+    <bean id="template"  class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 配置可以使用具名参数的JDBCTemplate类对象 -->
+        <bean id="namedTemplate"  class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <!-- 没有无参构造器，必须传入数据源或JdbcTemplate对象 -->
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+
+
+
+
+</beans>
